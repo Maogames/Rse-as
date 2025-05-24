@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Reseñas</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h2>Reseñas registradas</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Usuario</th>
+                <th>Puntuación</th>
+                <th>Comentario</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reseña in reseñas %}
+            <tr>
+                <td>{{ reseña.titulo }}</td>
+                <td>{{ reseña.usuario }}</td>
+                <td>{{ reseña.puntuacion }}</td>
+                <td>{{ reseña.comentario }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button onclick="location.href='/'">Volver al inicio</button>
+</body>
+</html>

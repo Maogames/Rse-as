@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Reseña</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h2>Registrar nueva reseña</h2>
+    <form id="formulario">
+        <input type="text" placeholder="Título de la película" name="titulo" required><br>
+        <input type="text" placeholder="Tu nombre" name="usuario" required><br>
+        <input type="number" placeholder="Puntuación (1-10)" name="puntuacion" required><br>
+        <textarea placeholder="Comentario" name="comentario" required></textarea><br>
+        <button type="submit">Registrar</button>
+    </form>
+    <button onclick="location.href='/'">Volver al inicio</button>
+
+    <script>
+        document.getElementById('formulario').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const datos = {
+                titulo: this.titulo.value,
+                usuario: this.usuario.value,
+                puntuacion: this.puntuacion.value,
+                comentario: this.comentario.value
+            };
+            fetch('/reseña', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(datos)
+            })
+            .then(res => res.json())
+            .then(data => alert(data.mensaje || data.error));
+        });
+    </script>
+</body>
+</html>
